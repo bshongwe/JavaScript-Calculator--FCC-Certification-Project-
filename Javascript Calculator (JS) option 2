@@ -1,0 +1,26 @@
+// select the output screen element
+const outputScreen = document.getElementById('display');
+
+// select all the button elements
+const buttons = document.querySelectorAll('button');
+
+// add an event listener to each button
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    if (button.value === '=') {
+      // evaluate the expression and update the display with the result
+      outputScreen.textContent = eval(outputScreen.textContent);
+    } else if (button.value === 'AC') {
+      // clear the display
+      outputScreen.textContent = '0';
+    } else {
+      // append the button's value to the expression on the display
+      if (outputScreen.textContent === '0') {
+        outputScreen.textContent = button.value;
+      } else {
+        outputScreen.textContent += button.value;
+      }
+    }
+  });
+});
+
